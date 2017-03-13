@@ -4,7 +4,8 @@
   "description": "Yeoman generator to create polutz domain modules.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./**/*.test.js"
+    "mocha": "mocha ./generators/**/*.test.js",
+    "test": "nyc npm run mocha && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=a04063db-6458-41b6-867f-036426c47bbe"
   },
   "repository": {
     "type": "git",
@@ -24,8 +25,14 @@
   },
   "homepage": "https://github.com/polutz/generator-ptz-domain#readme",
   "devDependencies": {
+    "codecov": "^1.0.1",
+    "nyc": "^10.1.2",
     "yeoman-assert": "^3.0.0",
     "yeoman-generator": "^1.1.1",
     "yeoman-test": "^1.6.0"
+  },
+  "dependencies": {
+    "istanbul": "^0.4.5",
+    "mocha-lcov-reporter": "^1.3.0"
   }
 }
