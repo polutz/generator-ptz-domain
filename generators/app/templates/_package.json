@@ -21,7 +21,7 @@
   "dependencies": {
     "babel-loader": "^6.2.10",
     "ptz-assert": "^1.2.0",
-    "ptz-core-domain": "^1.0.2"
+    "ptz-core-domain": "^1.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",

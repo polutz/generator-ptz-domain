@@ -1,3 +1,5 @@
+'use strict';
+
 var Generator = require('yeoman-generator'),
     _ = require('lodash');
 
@@ -5,9 +7,6 @@ module.exports = class extends Generator {
 
     constructor(args, opts) {
         super(args, opts);
-
-        // Next, add your custom code
-        this.option('babel'); // This method adds support for a `--babel` flag
     }
 
     //initializing - Your initialization methods (checking current project state, getting configs, etc)
@@ -91,7 +90,7 @@ module.exports = class extends Generator {
         this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'));
         this.fs.copy(this.templatePath('travis.yml'), this.destinationPath('.travis.yml'));
 
-        this.fs.copy(this.templatePath('typings/_index.d.ts'), this.destinationPath('src/typings/index.d.ts'));
+        this.fs.copy(this.templatePath('typings/_index.d.ts'), this.destinationPath('typings/index.d.ts'));
 
         this.fs.copy(this.templatePath('src/_index.ts'), this.destinationPath('src/index.ts'));
         this.fs.copy(this.templatePath('src/_errors.ts'), this.destinationPath('src/errors.ts'));

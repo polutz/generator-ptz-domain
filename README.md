@@ -9,11 +9,19 @@
 Yeoman generator to create polutz domain modules.
 
 ## Install
+You can remove 'yo typings' if you already have them installed
 ```
-    npm install -g generator-ptz-domain
+    npm install -g generator-ptz-domain yo typings
 ```
 
-## Usage
+## Create your project
+Go to your project folder and run:
 ```    
-    yo ptz-domain
+    yo ptz-domain && typings install
+```
+
+## Create an Entity class
+replace 'EntityName' with your class name, using first letter as upercase
+```    
+    yo ptz-domain:entity EntityName
 ```
