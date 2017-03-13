@@ -1,0 +1,29 @@
+{
+  "name": "generator-ptz-domain",
+  "version": "1.0.0",
+  "description": "Yeoman generator to create polutz domain modules.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polutz/generator-ptz-domain.git"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "polutz",
+    "domain",
+    "ddd",
+    "generator"
+  ],
+  "author": "angeloocana.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/polutz/generator-ptz-domain/issues"
+  },
+  "homepage": "https://github.com/polutz/generator-ptz-domain#readme",
+  "dependencies": {
+    "yeoman-generator": "^1.1.1"
+  }
+}
