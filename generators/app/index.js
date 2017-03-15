@@ -1,7 +1,8 @@
 'use strict';
 
 var Generator = require('yeoman-generator'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    defaultPrompting = require('generator-ptz/generators/app/defaultPrompting');
 
 module.exports = class extends Generator {
 
@@ -16,40 +17,7 @@ module.exports = class extends Generator {
 
     //prompting - Where you prompt users for options (where you'd call this.prompt())
     prompting() {
-        this.log('prompting');
-
-        return this.prompt([{
-            type: 'input',
-            name: 'name',
-            message: 'Your project name',
-            default: this.appname, // Default to current folder name
-            store: true
-        },
-        {
-            type: 'input',
-            name: 'githubAuthor',
-            message: 'git hub Author',
-            default: 'polutz',
-            store: true
-        },
-        {
-            type: 'input',
-            name: 'codecovToken',
-            message: 'get codecov token at https://codecov.io/'
-        },
-        {
-            type: 'confirm',
-            name: 'runNpmInstall',
-            message: 'Run npm install?',
-            default: true,
-            store: true
-        }]).then((answers) => {
-            this.appname = _.kebabCase(answers.name.replace(/\s+/g, ''));
-            this.appnameStartCase = _.startCase(this.appname);
-            this.codecovToken = answers.codecovToken;
-            this.githubAuthorProject = answers.githubAuthor + '/' + answers.name;
-            this.runNpmInstall = answers.runNpmInstall;
-        });
+        return defaultPrompting(this);
     }
 
     //    configuring - Saving configurations and configure the project (creating.editorconfig files and other metadata files)
@@ -60,35 +28,33 @@ module.exports = class extends Generator {
     //default - If the method name doesn't match a priority, it will be pushed to this group.
     default() {
         this.log('default');
+        this.composeWith(require.resolve('generator-ptz/generators/app'), {
+            isComposing: true,
+            skipInstall: this.options.skipInstall,
+            ptz: this.options.ptz
+        });
     }
 
     //writing - Where you write the generator specific files (routes, controllers, etc)
     writing() {
-        this.fs.copy(this.templatePath('_gulpfile.js'), this.destinationPath('gulpfile.js'));
-        this.fs.copy(this.templatePath('_LICENSE'), this.destinationPath('LICENSE'));
-        this.fs.copy(this.templatePath('_tsconfig.json'), this.destinationPath('tsconfig.json'));
-        this.fs.copy(this.templatePath('_typings.json'), this.destinationPath('typings.json'));
+        console.log('ptz-domain options =>>>>>>>>>>>>>>>>>>>>>>>>>>>>', this.options.ptz);
 
         this.fs.copyTpl(
             this.templatePath('_package.json'),
             this.destinationPath('package.json'),
             {
-                codecovToken: this.codecovToken,
-                appname: this.appname,
-                githubAuthorProject: this.githubAuthorProject
+                codecovToken: this.options.codecovToken,
+                appname: this.options.appname,
+                githubAuthorProject: this.options.githubAuthorProject
             });
 
         this.fs.copyTpl(
             this.templatePath('_README.md'),
             this.destinationPath('README.md'),
             {
-                appname: this.appname,
-                githubAuthorProject: this.githubAuthorProject
+                appname: this.options.appname,
+                githubAuthorProject: this.options.githubAuthorProject
             });
-
-        this.fs.copy(this.templatePath('babelrc'), this.destinationPath('.babelrc'));
-        this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'));
-        this.fs.copy(this.templatePath('travis.yml'), this.destinationPath('.travis.yml'));
 
         this.fs.copy(this.templatePath('typings/_index.d.ts'), this.destinationPath('typings/index.d.ts'));
 
@@ -99,8 +65,8 @@ module.exports = class extends Generator {
             this.templatePath('src/typings/_index.d.ts'),
             this.destinationPath('src/typings/index.d.ts'),
             {
-                appname: this.appname,
-                appnameStartCase: this.appnameStartCase
+                appname: this.options.appname,
+                appnameStartCase: this.options.appnameStartCase
             });
     }
 
@@ -111,10 +77,10 @@ module.exports = class extends Generator {
 
     //install - Where installation are run (npm, bower)
     install() {
-        if (!this.runNpmInstall)
+        if (!this.options.runNpmInstall)
             return;
 
-        this.npmInstall();
+        this.npmInstall(['ptz-core-domain'], { 'save': true });
     }
 
     //end - Called last, cleanup, say good bye, etc
@@ -122,4 +88,3 @@ module.exports = class extends Generator {
         this.log('end');
     }
 };
-
