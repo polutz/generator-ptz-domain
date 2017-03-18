@@ -47,9 +47,13 @@ module.exports = class extends Generator {
 
     //install - Where installation are run (npm, bower)
     install() {
-        if (!this.options.runNpmInstall)
+        console.log('install from ptz-domain');
+        console.log(this.options.ptz.runNpmInstall);
+
+        if (!this.options.ptz.runNpmInstall)
             return;
 
+        console.log('installing from ptz-domain');
         this.npmInstall(['ptz-core-domain'], { 'save': true });
     }
 

@@ -1,18 +1,17 @@
 import {EntityBase} from 'ptz-core-domain';
 
-export default class <%= entity %> extends EntityBase implements I<%= entity %>{
-    
+export default class <%= entity %> extends EntityBase implements I<%= entity %> {
+
     newPropTest: string;
 
-    constructor(args:I<%= entity %>Args){        
+    constructor(args: I<%= entity %>Args) {
         super(args);
 
-        //Map your props:
+        // Map your props:
         this.newPropTest = args.newPropTest;
     }
 
-    funcTest():boolean{
+    funcTest(): boolean {
         return true;
     }
 }
-
