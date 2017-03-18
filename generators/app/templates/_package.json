@@ -1,8 +1,9 @@
 {
   "name": "<%= appname %>",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "this is a Polutz Domain module.",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "typings": "./src/index.ts",
   "scripts": {
     "mocha": "mocha ./dist/**/*.js --compilers js:babel-core/register --require babel-polyfill",
     "pretest": "gulp js",

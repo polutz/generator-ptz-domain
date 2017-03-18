@@ -23,7 +23,9 @@ describe('ptz-domain:app', function () {
                 '.babelrc',
                 '.gitignore',
                 '.travis.yml',
-
+                
+                'src/index.ts',
+                'src/errors.ts',
                 'typings/index.d.ts'
             ]);
         });
