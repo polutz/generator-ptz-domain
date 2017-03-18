@@ -38,23 +38,6 @@ module.exports = class extends Generator {
     //writing - Where you write the generator specific files (routes, controllers, etc)
     writing() {
         console.log('ptz-domain options =>>>>>>>>>>>>>>>>>>>>>>>>>>>>', this.options.ptz);
-
-        this.fs.copyTpl(
-            this.templatePath('_package.json'),
-            this.destinationPath('package.json'),
-            {
-                codecovToken: this.options.codecovToken,
-                appname: this.options.appname,
-                githubAuthorProject: this.options.githubAuthorProject
-            });
-
-        this.fs.copyTpl(
-            this.templatePath('_README.md'),
-            this.destinationPath('README.md'),
-            {
-                appname: this.options.appname,
-                githubAuthorProject: this.options.githubAuthorProject
-            });
     }
 
     //conflicts - Where conflicts are handled (used internally)
