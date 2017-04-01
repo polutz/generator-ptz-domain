@@ -1,6 +1,6 @@
 {
   "name": "generator-ptz-domain",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Yeoman generator to create polutz domain modules.",
   "main": "index.js",
   "scripts": {
