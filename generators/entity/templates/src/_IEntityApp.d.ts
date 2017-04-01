@@ -1,3 +1,3 @@
-interface I<%= entity %>App {
+export interface I<%= entity %>App {
 
 }

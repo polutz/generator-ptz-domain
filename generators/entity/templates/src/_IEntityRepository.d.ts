@@ -1,3 +1,3 @@
-interface I<%= entity %>Repository {
+export interface I<%= entity %>Repository {
 
 }
