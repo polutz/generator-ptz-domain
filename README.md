@@ -8,6 +8,11 @@
 
 Yeoman generator to create polutz domain modules.
 
+## How to contribute
+[pt-br](https://github.com/polutz/generator-ptz-domain/docs/contribute.pt-br.md)
+[en-us](https://github.com/polutz/generator-ptz-domain/docs/contribute.md)
+
+
 ## Install
 You can remove 'yo typings' if you already have them installed
 ```
