@@ -1,19 +1,19 @@
 # Como contribuir
 
-[pt-br](https://github.com/polutz/generator-ptz-graphql/docs/contribute.pt-br.md)
-[en-us](https://github.com/polutz/generator-ptz-graphql/docs/contribute.md)
+[pt-br](https://github.com/polutz/generator-ptz-domain/docs/contribute.pt-br.md)
+[en-us](https://github.com/polutz/generator-ptz-domain/docs/contribute.md)
 
 
 ## Setup
 
 ### Download do projeto
 ```
-    git clone https://github.com/polutz/generator-ptz-graphql.git
+    git clone https://github.com/polutz/generator-ptz-domain.git
 ```
 
 ### Abrir pasta do projeto
 ```
-    cd generator-ptz-graphql
+    cd generator-ptz-domain
 ```
 
 ### Instalar dependencias
@@ -27,7 +27,7 @@
 
 ### Instalar globalmente
 
-With 'npm link', you can run 'yo ptz-graphql' from anywhere on your machine,
+With 'npm link', you can run 'yo ptz-domain' from anywhere on your machine,
 and it will always points to this directory
 
 ```
@@ -44,15 +44,15 @@ and it will always points to this directory
 
 ### Criar pasta do projeto teste
 ```
-    mkdir ptz-graphql-test && cd ptz-graphql-test 
+    mkdir ptz-domain-test && cd ptz-domain-test 
 ```
 
 ### Limpar pasta do projeto teste
 ```
-    cd .. && rm -r ptz-graphql-test && mkdir ptz-graphql-test && cd ptz-graphql-test
+    cd .. && rm -r ptz-domain-test && mkdir ptz-domain-test && cd ptz-domain-test
 ```
 
 ### Criar base do projeto com Yeoman
 ```
-    yo ptz-graphql
+    yo ptz-domain
 ```
