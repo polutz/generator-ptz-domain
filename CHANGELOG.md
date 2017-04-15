@@ -1,6 +1,9 @@
 ## master
 
 
+## 1.2.3 (April 15, 2017)
+* Fix: add flag to no create index.ts at generator-ptz.
+
 ## 1.2.2 (April 15, 2017)
 * Add errors.ts from generator-ptz.
 * Concat package.json.
