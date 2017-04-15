@@ -22,12 +22,10 @@ module.exports = class extends Generator {
 
     //    configuring - Saving configurations and configure the project (creating.editorconfig files and other metadata files)
     configuring() {
-        this.log('configuring');
     }
 
     //default - If the method name doesn't match a priority, it will be pushed to this group.
     default() {
-        this.log('default');
         this.composeWith(require.resolve('generator-ptz/generators/app'), {
             isComposing: true,
             skipInstall: this.options.skipInstall,
@@ -37,27 +35,36 @@ module.exports = class extends Generator {
 
     //writing - Where you write the generator specific files (routes, controllers, etc)
     writing() {
+        const currentPkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+
+        const pkg = _.merge({
+            dependencies: {
+                "ptz-core-domain": "^1.3.3"
+            }
+        }, currentPkg);
+
+        // Let's extend package.json so we're not overwriting user previous fields
+        this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+
+        this.fs.copy(this.templatePath('src/_index.ts'), this.destinationPath('src/index.ts'));
+
+        this.fs.copyTpl(
+            this.templatePath('src/_index.test.ts'),
+            this.destinationPath('src/index.test.ts'),
+            this.options.ptz);
+
+        this.fs.copy(this.templatePath('src/_errors.ts'), this.destinationPath('src/errors.ts'));
     }
 
     //conflicts - Where conflicts are handled (used internally)
     conflicts() {
-        this.log('conflicts');
     }
 
     //install - Where installation are run (npm, bower)
     install() {
-        console.log('install from ptz-domain');
-        console.log(this.options.ptz.runNpmInstall);
-
-        if (!this.options.ptz.runNpmInstall)
-            return;
-
-        console.log('installing from ptz-domain');
-        this.npmInstall(['ptz-core-domain'], { 'save': true });
     }
 
     //end - Called last, cleanup, say good bye, etc
     end() {
-        this.log('end');
     }
 };
