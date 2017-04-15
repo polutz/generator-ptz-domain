@@ -1,5 +1,10 @@
 ## master
 
+
+## 1.2.2 (April 15, 2017)
+* Add errors.ts from generator-ptz.
+* Concat package.json.
+
 ## 1.2.1 (April 1, 2017)
 * Templates adjustments and add changelog.
 
