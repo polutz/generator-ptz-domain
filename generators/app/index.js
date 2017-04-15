@@ -26,6 +26,8 @@ module.exports = class extends Generator {
 
     //default - If the method name doesn't match a priority, it will be pushed to this group.
     default() {
+        this.options.ptz.dontCreateIndexTs = true;
+
         this.composeWith(require.resolve('generator-ptz/generators/app'), {
             isComposing: true,
             skipInstall: this.options.skipInstall,
