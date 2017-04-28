@@ -1,6 +1,9 @@
 ## master
 
 
+## 1.2.4 (April 28, 2017)
+* Upgrade generator-ptz to 1.3.20.
+
 ## 1.2.3 (April 15, 2017)
 * Fix: add flag to no create index.ts at generator-ptz.
 
