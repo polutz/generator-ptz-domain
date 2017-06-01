@@ -35,6 +35,6 @@
     "yeoman-test": "^1.6.0"
   },
   "dependencies": {
-    "generator-ptz": "^1.0.1"
+    "generator-ptz": "^1.3.25"
   }
 }
